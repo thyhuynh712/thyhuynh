@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Co_Caro </title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin>
+  </script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<style>
+  body {
+    font: 34px "Century Gothic", Futura, sans-serif;
+    margin: 520px;
+    margin-top: 200px;
+  }
+
+  .square {
+    background: #fff;
+    border: 1.5px solid #636e72;
+    float: left;
+    font-size: 54px;
+    font-weight: bold;
+    line-height: 64px;
+    height: 64px;
+    margin-right: -1px;
+    margin-top: -1px;
+    padding: 0;
+    text-align: center;
+    width: 64px;
+  }
+
+  .board-row:after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+</style>
+<body>
+  <div id="mydiv"></div>
+  <script type="text/babel">
+    function Square({ ox, onClick }) {
+        //const [count, setCount] = React.useState("X");
+      // const onClick = () => setCount(count == "O" ? "X" : "O");
+      return (
+        // <div>
+        <button className="square" onClick={onClick}
+        >{ox}
+        </button>
+        // </div>
+      );
+    }
+    function Board() {
+      const [xIsNext, setXIsNext] = React.useState(true);
+      const [squares, setSquares] = React.useState(Array(9).fill(null));
+      function handleClick(i) {
+        if (squares[i]) {
+          return;
+        }
+        const nextSquares = squares.slice();
+        //  if (xIsNext%2===0) {
+        //    nextSquares[i] = "O";
+        // } 
+        // else {
+        //   nextSquares[i] = "X";
+        // } 
+        xIsNext % 2 === 0 ? nextSquares[i] = "O" : nextSquares[i] = "X";
+        setSquares(nextSquares);
+        setXIsNext(!xIsNext);
+      }
+      return (
+        <>
+          <div className="board-row" >
+            <Square ox={squares[0]} onClick={() => handleClick(0)} />
+            <Square ox={squares[1]} onClick={() => handleClick(1)} />
+            <Square ox={squares[2]} onClick={() => handleClick(2)} />
+          </div>
+          <div className="board-row">
+            <Square ox={squares[3]} onClick={() => handleClick(3)} />
+            <Square ox={squares[4]} onClick={() => handleClick(4)} />
+            <Square ox={squares[5]} onClick={() => handleClick(5)} />
+          </div>
+          <div className="board-row">
+            <Square ox={squares[6]} onClick={() => handleClick(6)} />
+            <Square ox={squares[7]} onClick={() => handleClick(7)} />
+            <Square ox={squares[8]} onClick={() => handleClick(8)} />
+          </div>
+        </>
+      );
+    }
+  
+    ReactDOM.render(<Board />, document.getElementById('mydiv'))
+  </script>
+</body>
+</html>
+
+
+
+ <!-- <!DOCTYPE html>
+<html>
+    <head>
+        <title> Truyện ngụ ngôn: Chỉ Có Một... </title>
+        <meta charset="utf-8">
+        <meta name ="viewport" content="width=device-width,initial-scale=1.0">
+    </head>
+    <style>
+     body{
+      background-image: url('\nen-hoa-hong.jpg');
+      background-repeat: no-repeat;
+      background-position-x: right;  
+     }
+       @font-face {
+        font-family: UTM_WEDDING;
+        src: url('UTM Wedding K&T.ttf');
+      } 
+      h1{
+        font-family: UTM_WEDDING;
+        font-size:40px;
+        text-align: center;
+        color: white;
+        text-shadow: 0px 0px 20px #eb0c5a;
+      }
+       </style>
+    <body>
+      <div class = "title">
+      <h1>Shop Hoa tươi Hạnh Phúc</h1>
+      </div>
+      <p> 
+      <div class = "d">
+        <ol type="1"> 
+        <li><b>Giới thiệu</b> </li>
+          <ul style="list-style-type: none;">
+            <p>
+              <img src =" C:\Users\Admin\Downloads\binh-hoa.jpg" alt ="Binh hoa" style="float:left; height:350px; width: 400px;">
+            <div class = "p1">
+            <li>Thành lập ngày 01/07/2014 </li>
+            <li>Chuyên cung cấp các loại hoa tươi </li>
+            <li>Có trên 20 cửa hàng bán lẻ tại TP.HCM </li>
+            <li>Nhận kết giỏ hoa theo yêu cầu của khách hàng </li>
+            </div>
+            </p>
+         </ul>
+       <li><b>Liên hệ</b></li>
+         <ul style="list-style-type: none;">
+          <p> 
+           <div class = "p2">
+            <li>Điện thoại: 84-08-8351056 </li>
+            <li>Địa chỉ: 245 Nguyễn Văn Cừ Q5, TP.HCM</li> 
+            <li>Copyright:  Công Ty Tin Hoc ABC </li>
+          </div>
+          </p>
+        </ul>
+        </ol>
+      </div>
+      </p>
+      
+</body>
+</html>
+ -->
